@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\FileuploadController;
+use App\Http\Controllers\LikedHomeController;
 use App\Http\Controllers\ResidentialPropertyController;
 
 /*
@@ -43,7 +45,7 @@ Route::group([
 
         //store file
         Route::resource('fileupload', FileuploadController::class);
-        Route::get('fileuploads/{residentialProperty_id}', [FileuploadController::class, 'getImagesOfHome']);
+        Route::get('fileuploads/{home_id}', [FileuploadController::class, 'getImagesOfHome']);
     });
 });
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

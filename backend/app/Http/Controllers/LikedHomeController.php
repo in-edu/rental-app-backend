@@ -41,7 +41,7 @@ class LikedHomeController extends Controller
             return response()->json(null, 204);
         }
         DB::table('liked_apartments')->where('user_id', '=', $user_id)->where('home_id', '=', $home_id)->delete();
-        $likedHomes = DB::table('homes')->join('liked_apartments', 'homes.id', '=', 'liked_apartments.home_id')->select('homes.*')->where('liked_apartments.user_id', '=', $user_id)->get();
+        $likedHomes = DB::table('residential_properties')->join('liked_apartments', 'residential_properties.id', '=', 'liked_apartments.home_id')->select('residential_properties.*')->where('liked_apartments.user_id', '=', $user_id)->get();
         // $likedHomes = DB::table('homes')->join('liked_apartments', 'homes.id', '=', 'liked_apartments.home_id')->select('homes.*')->where('liked_apartments.user_id', '=', $user_id)->get();
         return response()->json($likedHomes, 200);
     }
